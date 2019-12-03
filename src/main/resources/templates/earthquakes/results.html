@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Earthquake Search</title>
+    <div th:replace="bootstrap/bootstrap_head.html"></div>
+</head>
+
+<body>
+    <div class="container">
+        <div th:replace="bootstrap/bootstrap_nav_header.html"></div>
+
+        <h1>Earthquake Search Results</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Count</th>
+                    <th>Distance (km)</th>
+                    <th>Minimum Magnitude</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a th:url="${featureCollection.metadata.url}" th:text="${featureCollection.metadata.title}"></a>
+                    </td>
+                    <td th:text="${featureCollection.metadata.count}"></td>
+                    <td th:text="${eqSearch.distance}"></td>
+                    <td th:text="${eqSearch.minmag}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Earthquakes</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>place</th>
+                    <th>mag</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="f: ${featureCollection.features}">
+                    <td><a th:href="${f.properties.url}" th:text="${f.id}"></a></td>
+                    <td th:text="${f.properties.place}"></td>
+                    <td th:text="${f.properties.mag}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div th:replace="bootstrap/bootstrap_footer.html"></div>
+    </div>
+    <div th:replace="bootstrap/bootstrap_scripts.html"></div>
+</body>
+
+</html>

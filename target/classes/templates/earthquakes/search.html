@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"> 
+  <head>
+    <title>Earthquake Search</title>
+    <div th:replace="bootstrap/bootstrap_head.html"></div>
+  </head>
+  <body>
+    <div class="container">
+      <div th:replace="bootstrap/bootstrap_nav_header.html"></div>
+
+       <h1>Earthquake Search</h1>
+
+       <form action="#" th:action="@{/earthquakes/results}" th:object="${eqSearch}" method="get">
+            <table>
+                <tr class="form-group">
+                    <th><label for="distance" class="col-form-label">Distance (km)</label></th>
+                    <td><input type="number" th:field="*{distance}" class="form-control" id="distance" /></td>
+                </tr>
+                <tr class="form-group">
+                    <th><label for="minmag" class="col-form-label">Minimum Magnitude</label></th>
+                    <td><input type="number" th:field="*{minmag}" class="form-control" id="minmag" /></td>
+                </tr>
+            </table>
+
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </form>
+
+      <div th:replace="bootstrap/bootstrap_footer.html"></div>
+    </div>
+    <div th:replace="bootstrap/bootstrap_scripts.html"></div>
+  </body>
+</html>
