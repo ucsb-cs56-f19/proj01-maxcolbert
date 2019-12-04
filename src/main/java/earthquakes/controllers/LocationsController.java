@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import earthquakes.osm.PlaceCollection;
 import earthquakes.osm.Place;
 import earthquakes.services.LocationQueryService;
 import earthquakes.searches.LocSearch;
@@ -45,8 +46,8 @@ public class LocationsController {
 
         String json = e.getJSON(locSearch.getLocation());
         model.addAttribute("json", json);
-        List<Place> place = Place.listFromJson(json);
-        model.addAttribute("place",place);
+        List<Place> placeCollection = PlaceCollection.listFromJson(json);
+        model.addAttribute("placeCollection",placeCollection);
 
         // String json = e.getJSON(locSearch.getLocation());
         // model.addAttribute("json", json);

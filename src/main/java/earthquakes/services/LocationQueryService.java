@@ -38,8 +38,7 @@ public class LocationQueryService {
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
         String uri = "https://nominatim.openstreetmap.org/search/";
-        String params = String.format("%d?format=json",
-           location);
+        String params = String.format(location + "?format=json");
 
         String url = uri + params;
         logger.info("url=" + url);
@@ -53,7 +52,7 @@ public class LocationQueryService {
         } catch (HttpClientErrorException e) {
             retVal = "{\"error\": \"401: Unauthorized\"}";
         }
-        logger.info("from EarthquakeQueryService.getJSON: " + retVal);
+        logger.info("from LocationQueryService.getJSON: " + retVal);
         return retVal;
     }
 
