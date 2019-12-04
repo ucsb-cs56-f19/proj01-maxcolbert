@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import hello.geojson.FeatureCollection;
 import hello.services.EarthquakeQueryService;
-import hello.EqSearch;
+import hello.searches.EqSearch;
 
 import java.util.Map;
 import java.util.HashMap;

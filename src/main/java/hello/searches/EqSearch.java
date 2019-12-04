@@ -1,4 +1,4 @@
-package hello;
+package hello.searches;
 
 public class EqSearch {
 
