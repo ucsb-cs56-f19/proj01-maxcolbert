@@ -3,6 +3,7 @@ earthquakes/Application.class
 earthquakes/searches/EqSearch.class
 earthquakes/services/MembershipService.class
 earthquakes/services/GithubOrgMembershipService.class
+earthquakes/searches/LocSearch.class
 earthquakes/geojson/Properties.class
 earthquakes/controllers/HomeController.class
 earthquakes/AuthControllerAdvice.class
@@ -12,4 +13,5 @@ earthquakes/controllers/EarthquakesController.class
 earthquakes/geojson/Feature.class
 earthquakes/geojson/Metadata.class
 earthquakes/geojson/FeatureCollection.class
+earthquakes/controllers/LocationsController.class
 earthquakes/services/EarthquakeQueryService.class
