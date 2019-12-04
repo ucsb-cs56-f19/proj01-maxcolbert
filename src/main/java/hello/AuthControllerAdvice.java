@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import hello.repositories.UserRepository;
 import hello.entities.AppUser;
+import hello.services.MembershipService;
 import java.util.List;
 
 @ControllerAdvice

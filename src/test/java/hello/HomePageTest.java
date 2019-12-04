@@ -90,17 +90,6 @@ public class HomePageTest {
     }
 
     @Test
-    @WithMockUser
-    public void getPage1_hasCorrectHeader() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/page1")
-            .with(authentication(OAuthUtils.getOauthAuthenticationFor(principal)))
-            .accept(MediaType.TEXT_HTML))
-            .andExpect(status().isOk())
-            .andExpect(xpath("/html/body/div/h1").exists())
-            .andExpect(xpath("/html/body/div/h1").string("Earthquakes"));
-    }
-
-    @Test
     public void getNavigation_hasUsers() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
