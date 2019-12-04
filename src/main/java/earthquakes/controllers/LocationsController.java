@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import earthquakes.geojson.FeatureCollection;
-import earthquakes.services.EarthquakeQueryService;
+import earthquakes.services.LocationQueryService;
 import earthquakes.searches.LocSearch;
 
 import java.util.Map;
@@ -35,10 +35,13 @@ public class LocationsController {
     public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
 
-        // LocationQueryService e =
-        //    new ELocationQueryService();
+        LocationQueryService e = new LocationQueryService();
 
         model.addAttribute("locSearch", locSearch);
+        
+        String json = e.getJSON(locSearch.getLocation());
+        model.addAttribute("json", json);
+
         // String json = e.getJSON(locSearch.getDistance(), locSearch.getMinmag());
         // model.addAttribute("json", json);
         // FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
