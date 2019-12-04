@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MembershipService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab07</a> &gt; <a href="index.source.html" class="el_package">earthquakes.services</a> &gt; <span class="el_source">MembershipService.java</span></div><h1>MembershipService.java</h1><pre class="source lang-java linenums">package earthquakes.services;
+
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+
+public interface MembershipService {
+
+   /** check membership
+     * @param oAuth2AuthenticationToken oauth token 
+     * @return is current logged in user a member but NOT an admin of the github org?
+     * */
+    public boolean isMember(OAuth2AuthenticationToken oAuth2AuthenticationToken);
+
+   /** check admin
+     * @param oAuth2AuthenticationToken oauth token 
+     * @return is current logged in user an admin of the github org?
+     * */
+    public boolean isAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken);
+
+   /** check membership or admin
+     * @param oAuth2AuthenticationToken oauth token 
+     * @return is current logged in user a member or admin of the
+     * github org?
+     * */
+    default public boolean isMemberOrAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+<span class="nc bnc" id="L25" title="All 4 branches missed.">        return isMember(oAuth2AuthenticationToken) || isAdmin(oAuth2AuthenticationToken);</span>
+    }
+
+    default public String role(OAuth2AuthenticationToken token) {
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (token==null)</span>
+<span class="nc" id="L30">            return &quot;Guest&quot;;</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        if (isMember(token))</span>
+<span class="nc" id="L32">            return &quot;Member&quot;;</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (isAdmin(token))</span>
+<span class="nc" id="L34">            return &quot;Admin&quot;;</span>
+<span class="nc" id="L35">        return &quot;Guest&quot;;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthControllerAdvice.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab07</a> &gt; <a href="index.source.html" class="el_package">earthquakes</a> &gt; <span class="el_source">AuthControllerAdvice.java</span></div><h1>AuthControllerAdvice.java</h1><pre class="source lang-java linenums">package earthquakes;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+import earthquakes.repositories.UserRepository;
+import earthquakes.entities.AppUser;
+import earthquakes.services.MembershipService;
+import java.util.List;
+
+@ControllerAdvice
+<span class="nc" id="L15">public class AuthControllerAdvice {</span>
+
+    @Autowired   
+    private MembershipService membershipService;
+    @Autowired   
+    private UserRepository userRepository;
+
+    @ModelAttribute(&quot;isLoggedIn&quot;)
+    public boolean getIsLoggedIn(OAuth2AuthenticationToken token){
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        return token != null;</span>
+    }
+
+    @ModelAttribute(&quot;id&quot;)
+    public String getUid(OAuth2AuthenticationToken token){
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        if (token == null) return &quot;&quot;;</span>
+
+<span class="nc" id="L31">        String uid = token.getPrincipal().getAttributes().get(&quot;id&quot;).toString();</span>
+
+<span class="nc" id="L33">        List&lt;AppUser&gt; users = userRepository.findByUid(uid);</span>
+
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        if (users.size()==0) {</span>
+<span class="nc" id="L36">            AppUser u = new AppUser();</span>
+<span class="nc" id="L37">            u.setUid(uid);</span>
+<span class="nc" id="L38">            u.setLogin(token2login(token));</span>
+<span class="nc" id="L39">            userRepository.save(u);</span>
+        }
+
+<span class="nc" id="L42">        return uid;</span>
+    }
+
+    @ModelAttribute(&quot;login&quot;)
+    public String getLogin(OAuth2AuthenticationToken token){
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (token == null) return &quot;&quot;;</span>
+<span class="nc" id="L48">        return token.getPrincipal().getAttributes().get(&quot;login&quot;).toString();</span>
+    }
+
+    @ModelAttribute(&quot;isMember&quot;)
+    public boolean getIsMember(OAuth2AuthenticationToken token){
+<span class="nc" id="L53">        return membershipService.isMember(token);</span>
+    }
+    @ModelAttribute(&quot;isAdmin&quot;)
+    public boolean getIsAdmin(OAuth2AuthenticationToken token){
+<span class="nc" id="L57">        return membershipService.isAdmin(token);</span>
+    }
+
+    @ModelAttribute(&quot;role&quot;)
+    public String getRole(OAuth2AuthenticationToken token){
+<span class="nc" id="L62">        return membershipService.role(token);</span>
+    }
+
+    private String token2login(OAuth2AuthenticationToken token) {
+<span class="nc" id="L66">        return token.getPrincipal().getAttributes().get(&quot;login&quot;).toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

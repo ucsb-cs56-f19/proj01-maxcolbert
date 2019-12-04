@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FeatureCollection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab07</a> &gt; <a href="index.source.html" class="el_package">earthquakes.geojson</a> &gt; <span class="el_source">FeatureCollection.java</span></div><h1>FeatureCollection.java</h1><pre class="source lang-java linenums">package earthquakes.geojson;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+<span class="nc" id="L13">public class FeatureCollection {</span>
+<span class="nc" id="L14">    private static Logger logger = LoggerFactory.getLogger(FeatureCollection.class);</span>
+
+    public String type;
+    public Metadata metadata;
+    public List&lt;Feature&gt; features;
+
+    /**
+     * Create a FeatureCollection object from json representation
+     * 
+     * @param json String of json returned by API endpoint {@code /classes/search}
+     * @return a new FeatureCollection object
+     * @see &lt;a href=
+     *      &quot;https://tools.ietf.org/html/rfc7946&quot;&gt;https://tools.ietf.org/html/rfc7946&lt;/a&gt;
+     */
+    public static FeatureCollection fromJSON(String json) {
+        try {
+<span class="nc" id="L30">            ObjectMapper objectMapper = new ObjectMapper();</span>
+<span class="nc" id="L31">            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+
+<span class="nc" id="L33">            FeatureCollection featureCollection = objectMapper.readValue(json, FeatureCollection.class);</span>
+<span class="nc" id="L34">            return featureCollection;</span>
+<span class="nc" id="L35">        } catch (JsonProcessingException jpe) {</span>
+<span class="nc" id="L36">            logger.error(&quot;JsonProcessingException:&quot; + jpe);</span>
+<span class="nc" id="L37">            return null;</span>
+<span class="nc" id="L38">        } catch (Exception e) {</span>
+<span class="nc" id="L39">            logger.error(&quot;Exception:&quot; + e);</span>
+<span class="nc" id="L40">            return null;</span>
+        }
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

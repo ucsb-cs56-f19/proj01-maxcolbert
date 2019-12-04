@@ -1,4 +1,4 @@
-hello/BootstrapLiterals.class
-hello/HomePageTest.class
-hello/EarthquakeSearchTest.class
-hello/OAuthUtils.class
+earthquakes/EarthquakeSearchTest.class
+earthquakes/BootstrapLiterals.class
+earthquakes/OAuthUtils.class
+earthquakes/HomePageTest.class
