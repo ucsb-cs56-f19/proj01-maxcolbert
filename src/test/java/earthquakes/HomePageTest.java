@@ -97,5 +97,37 @@ public class HomePageTest {
                 .andExpect(xpath("//*[@id='navbarTogglerDemo03']/ul[1]/li[3]/a/@href").string("/users"));
     }
 
+    @Test
+    public void getNavigation_hasLocations() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
+                .andExpect(status().isOk())
+                .andExpect(xpath("//*[@id='navbarTogglerDemo03']/ul[1]/li[2]/a").exists())
+                .andExpect(xpath("//*[@id='navbarTogglerDemo03']/ul[1]/li[2]/a/@href").string("/locations/search"));
+    }
+
+    @Test
+    public void getHomePage_hasUsersLink() throws Exception {
+     mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
+             .andExpect(status().isOk())
+             .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[3]/a").exists())
+             .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[3]/a").string("Users"));
+    }
+
+    @Test
+    public void getHomePage_hasLocationsLink() throws Exception {
+     mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
+             .andExpect(status().isOk())
+             .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[2]/a").exists())
+             .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[2]/a").string("Location Search"));
+    }
+
+    @Test
+    public void getHomePage_hasEarthquakesLink() throws Exception {
+     mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))
+             .andExpect(status().isOk())
+             .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[1]/a").exists())
+             .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[1]/a").string("Earthquake Search"));
+    }
+
 }
 
