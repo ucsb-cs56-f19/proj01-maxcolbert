@@ -1,4 +1,4 @@
-package earthquakes.geojson;
+package earthquakes.osm;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +15,7 @@ public class Place {
     private static Logger logger = LoggerFactory.getLogger(Place.class);
 
     public String type;
-    public Metadata metadata;
+    // public Metadata metadata;
     public List<Place> features;
 
     /**

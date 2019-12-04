@@ -1,6 +1,6 @@
 earthquakes/entities/AppUser.class
 earthquakes/Application.class
-earthquakes/geojson/Place$1.class
+earthquakes/osm/Place.class
 earthquakes/searches/EqSearch.class
 earthquakes/services/MembershipService.class
 earthquakes/services/LocationQueryService.class
@@ -9,12 +9,12 @@ earthquakes/searches/LocSearch.class
 earthquakes/geojson/Properties.class
 earthquakes/controllers/HomeController.class
 earthquakes/AuthControllerAdvice.class
+earthquakes/osm/Place$1.class
 earthquakes/controllers/UsersController.class
 earthquakes/repositories/UserRepository.class
 earthquakes/controllers/EarthquakesController.class
 earthquakes/geojson/Feature.class
 earthquakes/geojson/Metadata.class
-earthquakes/geojson/Place.class
 earthquakes/geojson/FeatureCollection.class
 earthquakes/controllers/LocationsController.class
 earthquakes/services/EarthquakeQueryService.class
