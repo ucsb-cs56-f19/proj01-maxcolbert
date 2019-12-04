@@ -1,9 +1,10 @@
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/repositories/UserRepository.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/geojson/Properties.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/geojson/Metadata.java
+/Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/controllers/HomeController.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/controllers/UsersController.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/Application.java
-/Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/WebController.java
+/Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/controllers/EarthquakesController.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/EqSearch.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/MembershipService.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/hello/geojson/FeatureCollection.java

@@ -1,9 +1,10 @@
 hello/geojson/Properties.class
+hello/controllers/EarthquakesController.class
 hello/GithubOrgMembershipService.class
 hello/EqSearch.class
-hello/WebController.class
 hello/geojson/Feature.class
 hello/EarthquakeQueryService.class
+hello/controllers/HomeController.class
 hello/geojson/Metadata.class
 hello/repositories/UserRepository.class
 hello/MembershipService.class
