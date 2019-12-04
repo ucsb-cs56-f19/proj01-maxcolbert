@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GithubOrgMembershipService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">lab07</a> &gt; <a href="index.source.html" class="el_package">earthquakes.services</a> &gt; <span class="el_source">GithubOrgMembershipService.java</span></div><h1>GithubOrgMembershipService.java</h1><pre class="source lang-java linenums">package earthquakes.services;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.stereotype.Service;
+
+import com.jcabi.github.Github;
+import com.jcabi.github.Organization;
+import com.jcabi.github.RtGithub;
+import com.jcabi.github.User;
+import com.jcabi.github.wire.RetryCarefulWire;
+import com.jcabi.http.Request;
+import com.jcabi.http.response.JsonResponse;
+
+/**
+ * Service object that wraps the UCSB Academic Curriculum API
+ */
+@Service
+public class GithubOrgMembershipService implements MembershipService {
+
+<span class="nc" id="L28">    private Logger logger = LoggerFactory.getLogger(GithubOrgMembershipService.class);</span>
+
+    private String githubOrg;
+
+    @Autowired
+    private OAuth2AuthorizedClientService clientService;
+
+<span class="nc" id="L35">    public GithubOrgMembershipService(@Value(&quot;${app_github_org}&quot;) String githubOrg) {</span>
+<span class="nc" id="L36">        this.githubOrg = githubOrg;</span>
+<span class="nc" id="L37">        logger.info(&quot;githubOrg=&quot; + githubOrg);</span>
+<span class="nc" id="L38">    }</span>
+
+    /**
+     * is current logged in user a member but NOT an admin of the github org
+     */
+    public boolean isMember(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+<span class="nc" id="L44">        return hasRole(oAuth2AuthenticationToken, &quot;member&quot;);</span>
+    }
+
+    /** is current logged in user a member of the github org */
+    public boolean isAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+<span class="nc" id="L49">        return hasRole(oAuth2AuthenticationToken, &quot;admin&quot;);</span>
+    }
+
+    /**
+     * is current logged in user has role
+     * @param oauthToken oauth token 
+     * @param roleToTest &quot;member&quot; or &quot;admin&quot;
+     * @return if the current logged in user has that role
+     */
+
+    public boolean hasRole(OAuth2AuthenticationToken oauthToken, String roleToTest) {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (oauthToken == null) {</span>
+<span class="nc" id="L61">            return false;</span>
+        }
+<span class="nc" id="L63">        OAuth2User oAuth2User = oauthToken.getPrincipal();</span>
+<span class="nc" id="L64">        String user = (String) oAuth2User.getAttributes().get(&quot;login&quot;);</span>
+
+<span class="nc" id="L66">        Github github = null;</span>
+
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if (clientService==null) {</span>
+<span class="nc" id="L69">            logger.error(String.format(&quot;unable to obtain autowired clientService&quot;));</span>
+<span class="nc" id="L70">            return false;</span>
+        }
+<span class="nc" id="L72">        OAuth2AuthorizedClient client = clientService</span>
+<span class="nc" id="L73">                .loadAuthorizedClient(oauthToken.getAuthorizedClientRegistrationId(), oauthToken.getName());</span>
+
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (client==null) {</span>
+<span class="nc" id="L76">            logger.info(String.format(&quot;clientService was not null but client returned was null for user %s&quot;,user));</span>
+<span class="nc" id="L77">            return false;</span>
+        }
+
+<span class="nc" id="L80">        OAuth2AccessToken token = client.getAccessToken();</span>
+
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (token==null) {</span>
+<span class="nc" id="L83">            logger.info(String.format(&quot;client for %s was not null but getAccessToken returned null&quot;,user));</span>
+<span class="nc" id="L84">            return false;</span>
+        }
+<span class="nc" id="L86">        String accessToken = token.getTokenValue();</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (accessToken==null) {</span>
+<span class="nc" id="L88">            logger.info(String.format(&quot;token was not null but getTokenValue returned null for user %s&quot;,user));</span>
+<span class="nc" id="L89">            return false;</span>
+        }
+
+        try {
+
+            // I forget why we have Github wrapped like this
+            // TODO: find the tutorial that explains it
+            // I think it has something to do with respecting rate limits
+<span class="nc" id="L97">            github = new RtGithub(new RtGithub(accessToken).entry()</span>
+<span class="nc" id="L98">                    .through(RetryCarefulWire.class, 50));</span>
+
+            // logger.info(&quot;github=&quot; + github);
+            // User ghuser = github.users().get(user);
+            // logger.info(&quot;ghuser=&quot; + ghuser);
+            // JsonResponse jruser = github.entry().uri().path(&quot;/user&quot;).back().method(Request.GET).fetch()
+            //         .as(JsonResponse.class);
+            // logger.info(&quot;jruser =&quot; + jruser);
+            // Organization org = github.organizations().get(githubOrg);
+            // logger.info(&quot;org =&quot; + org);
+
+<span class="nc" id="L109">            String path = String.format(&quot;/user/memberships/orgs/%s&quot;,githubOrg);</span>
+
+<span class="nc" id="L111">            JsonResponse jr = github.entry().uri().path(path).back()</span>
+<span class="nc" id="L112">                    .method(Request.GET).fetch().as(JsonResponse.class);</span>
+
+<span class="nc" id="L114">            logger.info(&quot;jr =&quot; + jr);</span>
+
+<span class="nc" id="L116">            String actualRole = jr.json().readObject().getString(&quot;role&quot;);</span>
+<span class="nc" id="L117">            String state = jr.json().readObject().getString(&quot;state&quot;);</span>
+
+<span class="nc" id="L119">            logger.info(&quot;actualRole =&quot; + actualRole);</span>
+<span class="nc" id="L120">            logger.info(&quot;roleToTest =&quot; + roleToTest);</span>
+<span class="nc" id="L121">            logger.info(&quot;state =&quot; + state);</span>
+
+<span class="nc" id="L123">            return actualRole.equals(roleToTest);</span>
+<span class="nc" id="L124">        } catch (Exception e) {</span>
+<span class="nc" id="L125">            logger.error(&quot;Exception happened while trying to determine membership in github org&quot;);</span>
+<span class="nc" id="L126">            logger.error(&quot;Exception&quot;,e);</span>
+        }
+<span class="nc" id="L128">        return false;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
