@@ -11,6 +11,7 @@
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/services/MembershipService.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/geojson/Metadata.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/controllers/HomeController.java
+/Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/osm/Place.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/services/LocationQueryService.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/searches/LocSearch.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/services/EarthquakeQueryService.java
