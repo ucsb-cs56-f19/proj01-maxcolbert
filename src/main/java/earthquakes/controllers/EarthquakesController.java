@@ -39,7 +39,7 @@ public class EarthquakesController {
            new EarthquakeQueryService();
 
         model.addAttribute("eqSearch", eqSearch);
-        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());
+        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag(), eqSearch.getLat(), eqSearch.getLon());
         model.addAttribute("json", json);
         FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
         model.addAttribute("featureCollection",featureCollection);
