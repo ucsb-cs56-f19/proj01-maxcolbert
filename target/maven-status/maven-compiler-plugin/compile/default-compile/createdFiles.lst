@@ -2,6 +2,7 @@ earthquakes/entities/AppUser.class
 earthquakes/Application.class
 earthquakes/searches/EqSearch.class
 earthquakes/services/MembershipService.class
+earthquakes/services/LocationQueryService.class
 earthquakes/services/GithubOrgMembershipService.class
 earthquakes/searches/LocSearch.class
 earthquakes/geojson/Properties.class
