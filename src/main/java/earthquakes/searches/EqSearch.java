@@ -6,6 +6,7 @@ public class EqSearch {
     private int minmag;
     private double lat;
     private double lon;
+    private String location;
 
     public EqSearch(){
         // distance = 0;
@@ -24,6 +25,9 @@ public class EqSearch {
     public double getLon() {
         return lon;
     }
+    public String getLocation() {
+        return location;
+    }
 
     public void setDistance(int newVal) {
         distance = newVal;
@@ -36,6 +40,9 @@ public class EqSearch {
     }
     public void setLat(double newVal) {
         lat = newVal;
+    }
+    public void setLocation(String newVal) {
+        location = newVal;
     }
 
 
