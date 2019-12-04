@@ -23,7 +23,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 <span class="nc" id="L24">    private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);</span>
 
-    public String getJSON(int distance, int minmag) {
+    public String getJSON(int distance, int minmag, double lat, double lon) {
 <span class="nc" id="L27">        RestTemplate restTemplate = new RestTemplate();</span>
 
 <span class="nc" id="L29">        HttpHeaders headers = new HttpHeaders();</span>
@@ -33,10 +33,10 @@ import org.springframework.web.client.HttpClientErrorException;
 <span class="nc" id="L33">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(&quot;body&quot;, headers);</span>
 
 <span class="nc" id="L35">        String uri = &quot;https://earthquake.usgs.gov/fdsnws/event/1/query&quot;;</span>
-<span class="nc" id="L36">        double ucsbLat = 34.4140;</span>
-<span class="nc" id="L37">        double ucsbLong = -119.8489;</span>
+        // double ucsbLat = 34.4140;
+        // double ucsbLong = -119.8489;
 <span class="nc" id="L38">        String params = String.format(&quot;?format=geojson&amp;minmagnitude=%d&amp;maxradiuskm=%d&amp;latitude=%f&amp;longitude=%f&quot;,</span>
-<span class="nc" id="L39">           minmag,distance,ucsbLat,ucsbLong);</span>
+<span class="nc" id="L39">           minmag,distance,lat,lon);</span>
 
 <span class="nc" id="L41">        String url = uri + params;</span>
 <span class="nc" id="L42">        logger.info(&quot;url=&quot; + url);</span>

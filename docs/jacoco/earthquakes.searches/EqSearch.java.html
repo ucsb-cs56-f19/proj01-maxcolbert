@@ -4,25 +4,47 @@ public class EqSearch {
 
     private int distance;
     private int minmag;
+    private double lat;
+    private double lon;
+    private String location;
 
-<span class="fc" id="L8">    public EqSearch(){</span>
+<span class="fc" id="L11">    public EqSearch(){</span>
         // distance = 0;
         // minmag = 0;
-<span class="fc" id="L11">    }</span>
+<span class="fc" id="L14">    }</span>
 
     public int getDistance() {
-<span class="fc" id="L14">        return distance;</span>
+<span class="fc" id="L17">        return distance;</span>
     }
     public int getMinmag() {
-<span class="fc" id="L17">        return minmag;</span>
+<span class="fc" id="L20">        return minmag;</span>
+    }
+    public double getLat() {
+<span class="fc" id="L23">        return lat;</span>
+    }
+    public double getLon() {
+<span class="fc" id="L26">        return lon;</span>
+    }
+    public String getLocation() {
+<span class="fc" id="L29">        return location;</span>
     }
 
     public void setDistance(int newVal) {
-<span class="nc" id="L21">        distance = newVal;</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L33">        distance = newVal;</span>
+<span class="nc" id="L34">    }</span>
     public void setMinmag(int newVal) {
-<span class="nc" id="L24">        minmag = newVal;</span>
-<span class="nc" id="L25">    }</span>
+<span class="nc" id="L36">        minmag = newVal;</span>
+<span class="nc" id="L37">    }</span>
+    public void setLon(double newVal) {
+<span class="nc" id="L39">        lon = newVal;</span>
+<span class="nc" id="L40">    }</span>
+    public void setLat(double newVal) {
+<span class="nc" id="L42">        lat = newVal;</span>
+<span class="nc" id="L43">    }</span>
+    public void setLocation(String newVal) {
+<span class="nc" id="L45">        location = newVal;</span>
+<span class="nc" id="L46">    }</span>
+
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

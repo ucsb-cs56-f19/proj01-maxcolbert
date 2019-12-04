@@ -39,7 +39,7 @@ import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
            new EarthquakeQueryService();
 
 <span class="nc" id="L41">        model.addAttribute(&quot;eqSearch&quot;, eqSearch);</span>
-<span class="nc" id="L42">        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());</span>
+<span class="nc" id="L42">        String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag(), eqSearch.getLat(), eqSearch.getLon());</span>
 <span class="nc" id="L43">        model.addAttribute(&quot;json&quot;, json);</span>
 <span class="nc" id="L44">        FeatureCollection featureCollection = FeatureCollection.fromJSON(json);</span>
 <span class="nc" id="L45">        model.addAttribute(&quot;featureCollection&quot;,featureCollection);</span>
