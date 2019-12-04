@@ -20,6 +20,18 @@
                     <th><label for="minmag" class="col-form-label">Minimum Magnitude</label></th>
                     <td><input type="number" th:field="*{minmag}" class="form-control" id="minmag" /></td>
                 </tr>
+                <tr class="form-group">
+                    <th><label for="lat" class="col-form-label">Latitude</label></th>
+                    <td><input type="number" step="any" th:field="*{lat}" class="form-control" id="lat" /></td>
+                </tr>
+                <tr class="form-group">
+                    <th><label for="lon" class="col-form-label">Longitude</label></th>
+                    <td><input type="number" step="any" th:field="*{lon}" class="form-control" id="lon" /></td>
+                </tr>
+                <tr class="form-group">
+                    <th><label for="location" class="col-form-label">Location</label></th>
+                    <td><input type="text" th:field="*{location}" class="form-control" id="location" /></td>
+                </tr>
             </table>
 
             <input type="submit" class="btn btn-primary" value="Search" />

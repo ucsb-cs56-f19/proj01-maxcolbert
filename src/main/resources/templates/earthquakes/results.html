@@ -19,7 +19,9 @@
                     <th>Count</th>
                     <th>Distance (km)</th>
                     <th>Minimum Magnitude</th>
-
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Location</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +32,9 @@
                     <td th:text="${featureCollection.metadata.count}"></td>
                     <td th:text="${eqSearch.distance}"></td>
                     <td th:text="${eqSearch.minmag}"></td>
-
+                    <td th:text="${eqSearch.lat}"></td>
+                    <td th:text="${eqSearch.lon}"></td>
+                    <td th:text="${eqSearch.location}"></td>
                 </tr>
             </tbody>
         </table>
