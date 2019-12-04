@@ -1,4 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+lab07,earthquakes.services,LocationQueryService,83,0,0,0,21,0,2,0,2,0
 lab07,earthquakes.services,MembershipService,30,0,10,0,8,0,7,0,2,0
 lab07,earthquakes.services,EarthquakeQueryService,106,0,0,0,24,0,2,0,2,0
 lab07,earthquakes.services,GithubOrgMembershipService,200,0,10,0,44,0,9,0,4,0
@@ -6,10 +7,15 @@ lab07,earthquakes.geojson,FeatureCollection,38,0,0,0,12,0,3,0,3,0
 lab07,earthquakes.geojson,Properties,3,0,0,0,1,0,1,0,1,0
 lab07,earthquakes.geojson,Feature,3,0,0,0,1,0,1,0,1,0
 lab07,earthquakes.geojson,Metadata,3,0,0,0,1,0,1,0,1,0
+lab07,earthquakes.searches,LocSearch,10,0,0,0,5,0,3,0,3,0
 lab07,earthquakes.searches,EqSearch,8,9,0,0,4,4,2,3,2,3
 lab07,earthquakes.entities,AppUser,26,0,0,0,7,0,7,0,7,0
 lab07,earthquakes,AuthControllerAdvice,80,0,8,0,17,0,12,0,8,0
 lab07,earthquakes,Application,5,53,0,0,2,17,1,2,1,2
+lab07,earthquakes.controllers,LocationsController,34,0,0,0,9,0,3,0,3,0
 lab07,earthquakes.controllers,HomeController,28,5,0,0,6,2,2,2,2,2
 lab07,earthquakes.controllers,UsersController,17,0,0,0,6,0,2,0,2,0
 lab07,earthquakes.controllers,EarthquakesController,31,5,0,0,7,2,1,2,1,2
+lab07,earthquakes.osm,PlaceCollection.new TypeReference() {...},3,0,0,0,1,0,1,0,1,0
+lab07,earthquakes.osm,Place,3,0,0,0,1,0,1,0,1,0
+lab07,earthquakes.osm,PlaceCollection,40,0,0,0,12,0,3,0,3,0

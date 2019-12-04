@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"earthquakes"},{"l":"earthquakes.controllers"},{"l":"earthquakes.entities"},{"l":"earthquakes.geojson"},{"l":"earthquakes.repositories"},{"l":"earthquakes.searches"},{"l":"earthquakes.services"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"earthquakes"},{"l":"earthquakes.controllers"},{"l":"earthquakes.entities"},{"l":"earthquakes.geojson"},{"l":"earthquakes.osm"},{"l":"earthquakes.repositories"},{"l":"earthquakes.searches"},{"l":"earthquakes.services"}]
