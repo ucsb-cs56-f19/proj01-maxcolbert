@@ -42,7 +42,7 @@ public class LocationsController {
         String json = e.getJSON(locSearch.getLocation());
         model.addAttribute("json", json);
 
-        // String json = e.getJSON(locSearch.getDistance(), locSearch.getMinmag());
+        // String json = e.getJSON(locSearch.getLocation());
         // model.addAttribute("json", json);
         // FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
         // model.addAttribute("featureCollection",featureCollection);
