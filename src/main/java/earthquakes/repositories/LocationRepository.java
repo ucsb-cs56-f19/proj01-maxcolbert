@@ -8,4 +8,5 @@ import earthquakes.entities.Location;
 @Repository
 public interface LocationRepository extends CrudRepository<Location, Long> {
    List<Location> findByPlaceId(String placeId);
+   List<Location> findByUid(String uid);
 }
