@@ -12,14 +12,18 @@
       <table class="table">
           <thead>
               <tr>
-                  <th>placeId</th>
-                  <th>location</th>
+                  <th>Place ID</th>
+                  <th>Display Name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
               </tr>
           </thead>
           <tbody>
               <tr th:each="l: ${locations}">
                 <td th:text="${l.placeId}"></td>
-                <td th:text="${l.location}"></td>
+                <td th:text="${l.displayName}"></td>
+                <td th:text="${l.lat}"></td>
+                <td th:text="${l.lon}"></td>
               </tr>
           </tbody>
       </table>
