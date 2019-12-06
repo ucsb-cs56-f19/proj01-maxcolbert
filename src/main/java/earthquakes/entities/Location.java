@@ -11,17 +11,20 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long placeId;
+    private double lat;
+    private double lon;
+    private String displayName;
 
-    private String location;
-
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
+    public String getDisplayName() { return displayName; }
+    public void setDisplayName(String displayName) { this.displayName = displayName; }
 
     public Long getPlaceId() { return placeId; }
     public void setPlaceId(Long placeId) { this.placeId = placeId; }
 
-    // public String getLogin() { return login; }
-    // public void setLogin(String login) { this.login = login; }
-    // public String getUid() { return uid; }
-    // public void setUid (String uid) { this.uid = uid; }
+    public double getLat() { return lat; }
+    public void setLat(double lat) { this.lat = lat; }
+
+    public double getLon() { return lon; }
+    public void setLon(double lon) { this.lon = lon; }
+
 }
