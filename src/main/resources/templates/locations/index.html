@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"> 
+  <head>
+    <title>Favorite Locations</title>
+    <div th:replace="bootstrap/bootstrap_head.html"></div>
+  </head>
+  <body>
+    <div class="container">
+      <div th:replace="bootstrap/bootstrap_nav_header.html"></div>
+
+      <h3>Favorite Locations</h3>
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>placeId</th>
+                  <th>location</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr th:each="l: ${locations}">
+                <td th:text="${l.placeId}"></td>
+                <td th:text="${l.location}"></td>
+              </tr>
+          </tbody>
+      </table>
+
+      <div th:replace="bootstrap/bootstrap_footer.html"></div>
+    </div>
+    <div th:replace="bootstrap/bootstrap_scripts.html"></div>
+  </body>
+</html>

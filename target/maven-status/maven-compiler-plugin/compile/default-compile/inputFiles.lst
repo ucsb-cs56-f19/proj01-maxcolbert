@@ -1,4 +1,5 @@
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/services/GithubOrgMembershipService.java
+/Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/entities/Location.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/geojson/FeatureCollection.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/controllers/EarthquakesController.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/geojson/Feature.java
@@ -17,4 +18,5 @@
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/searches/LocSearch.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/services/EarthquakeQueryService.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/searches/EqSearch.java
+/Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/repositories/LocationRepository.java
 /Users/maxcolbert/Documents/MAX UCSB/cs56/proj01/proj01-maxcolbert/src/main/java/earthquakes/geojson/Properties.java
