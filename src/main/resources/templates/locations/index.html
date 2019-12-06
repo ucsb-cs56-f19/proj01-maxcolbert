@@ -17,6 +17,7 @@
                   <th>Latitude</th>
                   <th>Longitude</th>
                   <th>Get Earthquakes</th>
+                  <th>Delete</th>
               </tr>
           </thead>
           <tbody>
@@ -27,6 +28,9 @@
                 <td th:text="${l.lon}"></td>
                 <td>
                     <a th:href="@{/earthquakes/search/(lat=${l.lat},lon=${l.lon},location=${l.displayName})}">Get Earthquakes</a>
+                </td>
+                <td>
+                    Delete
                 </td>
               </tr>
           </tbody>
