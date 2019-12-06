@@ -23,7 +23,7 @@ public class Location {
     public void setId(Long id) { this.id = id; }
 
     public String getUid() { return uid; }
-    public void setUid (String uid) { this.uid = uid; }
+    public void setUid(String uid) { this.uid = uid; }
 
     public String getDisplayName() { return displayName; }
     public void setDisplayName(String displayName) { this.displayName = displayName; }
