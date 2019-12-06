@@ -30,7 +30,9 @@
                     <a th:href="@{/earthquakes/search/(lat=${l.lat},lon=${l.lon},location=${l.displayName})}">Get Earthquakes</a>
                 </td>
                 <td>
-                    Delete
+                  <form th:method="delete" th:action="@{/locations/delete/} + ${l.placeId}">
+                    <input type="submit" class="btn btn-danger" value="Delete" />
+                  </form>
                 </td>
               </tr>
           </tbody>
