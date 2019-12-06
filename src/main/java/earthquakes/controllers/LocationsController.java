@@ -56,7 +56,7 @@ public class LocationsController {
     public String admin(Model model) {
         Iterable<Location> locations = locationRepository.findAll();
         model.addAttribute("locations", locations);
-        return "locations/index";
+        return "locations/admin";
     }
 
     @PostMapping("/locations/add")
