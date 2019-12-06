@@ -44,6 +44,13 @@ public class LocationsController {
         return "locations/index";
     }
 
+    @PostMapping("/locations/add")
+    public String add(Location location, Model model) {
+      locationRepository.save(location);
+      model.addAttribute("locations", locationRepository.findAll());
+      return "locations/index";
+    }
+
     @GetMapping("/locations/search")
     public String getLocationsSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
