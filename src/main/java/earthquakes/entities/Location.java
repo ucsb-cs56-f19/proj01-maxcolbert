@@ -10,10 +10,15 @@ public class Location {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private long placeId;
     private double lat;
     private double lon;
     private String displayName;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getDisplayName() { return displayName; }
     public void setDisplayName(String displayName) { this.displayName = displayName; }
